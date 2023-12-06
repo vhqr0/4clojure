@@ -7,6 +7,7 @@
    (= (__ 5) 120)
    (= (__ 8) 40320)))
 
-(def f)
+;; (defn f [x] ((fn [acc x] (if (<= x 1) acc (recur (* acc x) (dec x)))) 1 x))
+(defn f [x] (reduce * (range 1 (inc x))))
 
 (println (testf f))
