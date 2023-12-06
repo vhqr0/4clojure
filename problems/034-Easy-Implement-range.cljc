@@ -8,6 +8,6 @@
    (= (__ -2 2) '(-2 -1 0 1))
    (= (__ 5 8) '(5 6 7))))
 
-(def f)
+(defn f [x y] ((fn [rcoll x y] (if (>= x y) rcoll (recur (conj rcoll x) (inc x) y))) [] x y))
 
 (println (testf f))

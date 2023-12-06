@@ -4,6 +4,6 @@
   (and
    (= __ (apply str (re-seq #"[A-Z]+" "bA1B3Ce ")))))
 
-(def f)
+(def f "ABC")
 
 (println (testf f))

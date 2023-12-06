@@ -8,6 +8,11 @@
    (= (__ ["a" ["b"] "c"]) '("a" "b" "c"))
    (= (__ '((((:a))))) '(:a))))
 
-(defn f [coll])
+(defn f [coll] ((fn [rcoll coll colls]
+                  (cond (and (empty? coll) (empty? colls)) rcoll
+                        (empty? coll) (recur rcoll colls '())
+                        (or (seq? (first coll)) (vector? (first coll))) (recur rcoll (first coll) (concat (rest coll) colls))
+                        true (recur (conj rcoll (first coll)) (rest coll) colls)))
+                [] coll '()))
 
 (println (testf f))

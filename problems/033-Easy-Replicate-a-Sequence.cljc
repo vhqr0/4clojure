@@ -8,6 +8,6 @@
    (= (__ [[1 2] [3 4]] 2) '([1 2] [1 2] [3 4] [3 4]))
    (= (__ [44 33] 2) [44 44 33 33])))
 
-(def f)
+(defn f [coll n] ((fn [rcoll coll] (if (empty? coll) rcoll (recur ((fn [coll x n] (if (= n 0) coll (recur (conj coll x) x (dec n)))) rcoll (first coll) n) (rest coll)))) [] coll))
 
 (println (testf f))

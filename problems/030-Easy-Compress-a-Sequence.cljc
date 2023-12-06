@@ -6,6 +6,6 @@
    (= (__ [1 1 2 3 3 2 2 3]) '(1 2 3 2 3))
    (= (__ [[1 2] [1 2] [3 4] [1 2]]) '([1 2] [3 4] [1 2]))))
 
-(def f)
+(defn f [coll] ((fn [rcoll coll x] (cond (empty? coll) rcoll (= (first coll) x) (recur rcoll (rest coll) x) true (recur (conj rcoll (first coll)) (rest coll) (first coll)))) [] coll nil))
 
 (println (testf f))

@@ -8,6 +8,6 @@
    (= (__ 30 20) 30)
    (= (__ 45 67 11) 67)))
 
-(def f)
+(defn f [& coll] ((fn [coll x] (if (empty? coll) x (recur (rest coll) (if (> (first coll) x) (first coll) x)))) coll 0))
 
 (println (testf f))
