@@ -6,6 +6,7 @@
    (= (__ ["a" "b" "c"]) "b")
    (= (__ [[1 2] [3 4]]) [1 2])))
 
-(def f)
+;; (def f (comp last butlast))
+(defn f [coll] ((fn [coll x y] (if (empty? coll) y (recur (rest coll) (first coll) x))) coll nil nil))
 
 (println (testf f))

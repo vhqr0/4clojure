@@ -6,6 +6,6 @@
   (and
    (= (- 10 (* 2 3)) __)))
 
-(def f)
+(def f 4)
 
 (println (testf f))

@@ -5,6 +5,6 @@
    (= __ (conj [1 2 3] 4))
    (= __ (conj [1 2] 3 4))))
 
-(def f)
+(def f [1 2 3 4])
 
 (println (testf f))

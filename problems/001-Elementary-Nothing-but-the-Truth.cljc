@@ -5,6 +5,6 @@
   (and
    (= __ true)))
 
-(def f)
+(def f true)
 
 (println (testf f))

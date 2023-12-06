@@ -6,6 +6,6 @@
    (= __ (second [2 3 4]))
    (= __ (last (list 1 2 3)))))
 
-(def f)
+(def f 3)
 
 (println (testf f))

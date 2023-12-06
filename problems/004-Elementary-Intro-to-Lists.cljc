@@ -2,8 +2,9 @@
 
 (defn testf [__]
   (and
-   (= (list __) '(:a :b :c))))
+   ;; (= (list __) '(:a :b :c))
+   (= __ '(:a :b :c))))
 
-(def f)
+(def f (list :a :b :c))
 
 (println (testf f))

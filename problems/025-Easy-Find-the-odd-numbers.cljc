@@ -7,6 +7,6 @@
    (= (__ [2 2 4 6]) '())
    (= (__ [1 1 1 3]) '(1 1 1 3))))
 
-(def f)
+(def f (partial filter odd?))
 
 (println (testf f))

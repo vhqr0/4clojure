@@ -7,6 +7,6 @@
    (= __ (#(+ % 5) 3))
    (= __ ((partial + 5) 3))))
 
-(def f)
+(def f 8)
 
 (println (testf f))

@@ -5,6 +5,6 @@
   (and
    (= __ (filter #(> % 5) '(3 4 5 6 7)))))
 
-(def f)
+(def f '(6 7))
 
 (println (testf f))

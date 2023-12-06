@@ -6,6 +6,6 @@
    (= (__ "Jenn") "Hello, Jenn!")
    (= (__ "Rhea") "Hello, Rhea!")))
 
-(def f)
+(def f #(str "Hello, " % "!"))
 
 (println (testf f))

@@ -9,6 +9,6 @@
    (true? (__ '(1 1 3 3 1 1)))
    (false? (__ '(:a :b :c)))))
 
-(def f)
+(defn f [coll] (= (seq coll) (reverse coll)))
 
 (println (testf f))

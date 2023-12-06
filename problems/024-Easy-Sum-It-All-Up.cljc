@@ -8,6 +8,6 @@
    (= (__ '(0 0 -1)) -1)
    (= (__ '(1 10 3)) 14)))
 
-(def f)
+(def f (partial reduce +))
 
 (println (testf f))

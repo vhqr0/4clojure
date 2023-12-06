@@ -4,6 +4,6 @@
   (and
    (= __ (.toUpperCase "hello world"))))
 
-(def f)
+(def f "HELLO WORLD")
 
 (println (testf f))

@@ -7,6 +7,6 @@
    (= __ (conj '(2 3 4) 1))
    (= __ (conj '(3 4) 2 1))))
 
-(def f)
+(def f '(1 2 3 4))
 
 (println (testf f))

@@ -8,6 +8,6 @@
    (= (__ ["a" ["b"] "c"]) '("a" "b" "c"))
    (= (__ '((((:a))))) '(:a))))
 
-(def f)
+(defn f [coll])
 
 (println (testf f))

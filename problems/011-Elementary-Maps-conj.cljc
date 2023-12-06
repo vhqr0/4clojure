@@ -4,6 +4,6 @@
   (and
    (= {:a 1, :b 2, :c 3} (conj {:a 1} __ [:c 3]))))
 
-(def f)
+(def f {:b 2})
 
 (println (testf f))

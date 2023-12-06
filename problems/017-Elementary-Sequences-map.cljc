@@ -5,6 +5,6 @@
   (and
    (= __ (map #(+ % 5) '(1 2 3)))))
 
-(def f)
+(def f '(6 7 8))
 
 (println (testf f))

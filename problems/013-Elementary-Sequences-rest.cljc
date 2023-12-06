@@ -4,6 +4,6 @@
   (and
    (= __ (rest [10 20 30 40]))))
 
-(def f)
+(def f '(20 30 40))
 
 (println (testf f))

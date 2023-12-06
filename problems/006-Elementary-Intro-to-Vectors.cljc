@@ -3,8 +3,9 @@
 
 (defn testf [__]
   (and
-   (= [__] (list :a :b :c) (vec '(:a :b :c)) (vector :a :b :c))))
+   ;; (= [__] (list :a :b :c) (vec '(:a :b :c)) (vector :a :b :c))
+   (= __ (list :a :b :c) (vec '(:a :b :c)) (vector :a :b :c))))
 
-(def f)
+(def f [:a :b :c])
 
 (println (testf f))

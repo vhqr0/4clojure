@@ -9,6 +9,6 @@
    (= (__ [1 2 3 4] 1) 2)
    (= (__ '([1 2] [3 4] [5 6]) 2) [5 6])))
 
-(def f)
+(defn f [coll n] (if (<= n 0) (first coll) (recur (rest coll) (dec n))))
 
 (println (testf f))
