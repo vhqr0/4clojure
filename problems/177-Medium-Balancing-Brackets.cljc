@@ -2,7 +2,7 @@
 ;; function that takes in a string and returns truthy if all square [ ] round ( ) and curly { } brackets are properly
 ;; paired and legally nested, or returns falsey otherwise.
 
-(defn test [__]
+(defn testf [__]
   (and
    (__ "This string has no brackets.")
    (__ "class Test { public static void main(String[] args) { System.out.println(\"Hello world.\"); } }")
@@ -13,6 +13,6 @@
    (not (__ "([]([(()){()}(()(()))(([[]]({}([)))())]((((()()))))))"))
    (not (__ "["))))
 
-(defn f [])
+(def f)
 
 (println (testf f))

@@ -3,7 +3,7 @@
 ;; be given a set of tuples representing the edges of a graph. Each member of a tuple being a vertex/node in the
 ;; graph.<br/><br/>-Each edge is undirected (can be traversed either direction).
 
-(defn test [__]
+(defn testf [__]
   (and
    (= true (__ #{[:a :a]}))
    (= true (__ #{[:a :b]}))
@@ -12,6 +12,6 @@
    (= false (__ #{[:a :b] [:b :c] [:c :d] [:x :y] [:d :a] [:b :e]}))
    (= true (__ #{[:a :b] [:b :c] [:c :d] [:x :y] [:d :a] [:b :e] [:x :a]}))))
 
-(defn f [])
+(def f)
 
 (println (testf f))

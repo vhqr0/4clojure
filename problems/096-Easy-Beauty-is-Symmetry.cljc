@@ -2,7 +2,7 @@
 ;; tree. Write a predicate to determine whether or not a given binary tree is symmetric. (see <a href='/problem/95'>To
 ;; Tree, or not to Tree</a> for a reminder on the tree representation we're using).
 
-(defn test [__]
+(defn testf [__]
   (and
    (= (__ '(:a (:b nil nil) (:b nil nil))) true)
    (= (__ '(:a (:b nil nil) nil)) false)
@@ -11,6 +11,6 @@
    (= (__ [1 [2 nil [3 [4 [5 nil nil] [6 nil nil]] nil]] [2 [3 nil [4 [5 nil nil] [6 nil nil]]] nil]]) false)
    (= (__ [1 [2 nil [3 [4 [5 nil nil] [6 nil nil]] nil]] [2 [3 nil [4 [6 nil nil] nil]] nil]]) false)))
 
-(defn f [])
+(def f)
 
 (println (testf f))

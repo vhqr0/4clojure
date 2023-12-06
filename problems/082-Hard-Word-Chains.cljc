@@ -3,7 +3,7 @@
 ;; example word chain:<br/><br/>cat -> cot -> coat -> oat -> hat -> hot -> hog -> dog<br/><br/>Write a function which takes
 ;; a sequence of words, and returns true if they can be arranged into one continous word chain, and false if they cannot.
 
-(defn test [__]
+(defn testf [__]
   (and
    (= true (__ #{"hat" "coat" "dog" "cat" "oat" "cot" "hot" "hog"}))
    (= false (__ #{"cot" "hot" "bat" "fat"}))
@@ -12,6 +12,6 @@
    (= true (__ #{"share" "hares" "shares" "hare" "are"}))
    (= false (__ #{"share" "hares" "hare" "are"}))))
 
-(defn f [])
+(def f)
 
 (println (testf f))

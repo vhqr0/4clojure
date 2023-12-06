@@ -1,9 +1,9 @@
 ;; Regex patterns are supported with a special reader macro.
 
-(defn test [__]
+(defn testf [__]
   (and
    (= __ (apply str (re-seq #"[A-Z]+" "bA1B3Ce ")))))
 
-(defn f [])
+(def f)
 
 (println (testf f))

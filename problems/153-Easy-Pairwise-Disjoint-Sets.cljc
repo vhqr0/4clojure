@@ -3,7 +3,7 @@
 ;; attention to them. </p> <p> <sup>1</sup>Such sets are usually called <i>pairwise disjoint</i> or <i>mutually
 ;; disjoint</i>. </p>
 
-(defn test [__]
+(defn testf [__]
   (and
    (= (__ #{#{\U} #{\s} #{\e \R \E} #{\P \L} #{\.}}) true)
    (= (__ #{#{:a :b :c :d :e} #{:a :b :c :d} #{:a :b :c} #{:a :b} #{:a}}) false)
@@ -14,6 +14,6 @@
    (= (__ #{#{distinct?} #{#(-> %) #(-> %)} #{#(-> %) #(-> %) #(-> %)} #{#(-> %) #(-> %) #(-> %)}}) true)
    (= (__ #{#{(#(-> *)) + (quote mapcat) #_ nil} #{'+ '* mapcat (comment mapcat)} #{(do) set contains? nil?} #{, , , #_, , empty?}}) false)))
 
-(defn f [])
+(def f)
 
 (println (testf f))

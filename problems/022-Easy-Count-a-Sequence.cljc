@@ -2,7 +2,7 @@
 
 ;; restricted: count 
 
-(defn test [__]
+(defn testf [__]
   (and
    (= (__ '(1 2 3 3 1)) 5)
    (= (__ "Hello World") 11)
@@ -10,6 +10,6 @@
    (= (__ '(13)) 1)
    (= (__ '(:a :b :c)) 3)))
 
-(defn f [])
+(def f)
 
 (println (testf f))

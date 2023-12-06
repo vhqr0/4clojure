@@ -8,7 +8,7 @@
 ;; though). </br> - Characters are not case-sensitive. </br> - Words may be placed vertically (proceeding top-down only),
 ;; or horizontally (proceeding left-right only).
 
-(defn test [__]
+(defn testf [__]
   (and
    (= true (__ "the" ["_ # _ _ e"]))
    (= false (__ "the" ["c _ _ _" "d _ # e" "r y _ _"]))
@@ -16,6 +16,6 @@
    (= false (__ "joy" ["c o n j" "_ _ y _" "r _ _ #"]))
    (= true (__ "clojure" ["_ _ _ # j o y" "_ _ o _ _ _ _" "_ _ f _ # _ _"]))))
 
-(defn f [])
+(def f)
 
 (println (testf f))

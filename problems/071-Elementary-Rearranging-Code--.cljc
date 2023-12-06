@@ -3,10 +3,10 @@
 ;; second form, making a list of that form if necessary. This process continues for all the forms. Using -> can sometimes
 ;; make your code more readable.
 
-(defn test [__]
+(defn testf [__]
   (and
    (= (__ (sort (rest (reverse [2 5 4 1 3 6])))) (-> [2 5 4 1 3 6] (reverse) (rest) (sort) (__)) 5)))
 
-(defn f [])
+(def f)
 
 (println (testf f))

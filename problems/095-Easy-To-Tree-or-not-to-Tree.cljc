@@ -2,7 +2,7 @@
 ;; href="http://en.wikipedia.org/wiki/Binary_tree">binary tree</a>. Each node in the tree must have a value, a left child,
 ;; and a right child.
 
-(defn test [__]
+(defn testf [__]
   (and
    (= (__ '(:a (:b nil nil) nil)) true)
    (= (__ '(:a (:b nil nil))) false)
@@ -12,6 +12,6 @@
    (= (__ [1 [2 [3 [4 false nil] nil] nil] nil]) false)
    (= (__ '(:a nil ())) false)))
 
-(defn f [])
+(def f)
 
 (println (testf f))

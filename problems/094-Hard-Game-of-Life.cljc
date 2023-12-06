@@ -7,12 +7,12 @@
 ;; cell, as if by reproduction.<br/><br/>Write a function that accepts a board, and returns a board representing the next
 ;; generation of cells.
 
-(defn test [__]
+(defn testf [__]
   (and
    (= (__ [" " " ## " " ## " " ## " " ## " " "]) [" " " ## " " # " " # " " ## " " "])
    (= (__ [" " " " " ### " " " " "]) [" " " # " " # " " # " " "])
    (= (__ [" " " " " ### " " ### " " " " "]) [" " " # " " # # " " # # " " # " " "])))
 
-(defn f [])
+(def f)
 
 (println (testf f))

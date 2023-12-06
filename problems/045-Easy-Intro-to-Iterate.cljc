@@ -1,9 +1,9 @@
 ;; The iterate function can be used to produce an infinite lazy sequence.
 
-(defn test [__]
+(defn testf [__]
   (and
    (= __ (take 5 (iterate #(+ 3 %) 1)))))
 
-(defn f [])
+(def f)
 
 (println (testf f))

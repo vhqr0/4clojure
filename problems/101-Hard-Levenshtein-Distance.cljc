@@ -4,7 +4,7 @@
 ;; delete a single item<br/>- replace a single item with another item<br/><br/>WARNING: Some of the test cases may timeout
 ;; if you write an inefficient solution!
 
-(defn test [__]
+(defn testf [__]
   (and
    (= (__ "kitten" "sitting") 3)
    (= (__ "closure" "clojure") (__ "clojure" "closure") 1)
@@ -16,6 +16,6 @@
    (= (__ "ttttattttctg" "tcaaccctaccat") 10)
    (= (__ "gaattctaatctc" "caaacaaaaaattt") 9)))
 
-(defn f [])
+(def f)
 
 (println (testf f))

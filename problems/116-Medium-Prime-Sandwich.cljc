@@ -2,12 +2,12 @@
 ;; the primes directly before and after it in the sequence of valid primes. Create a function which takes an integer n, and
 ;; returns true iff it is a balanced prime.
 
-(defn test [__]
+(defn testf [__]
   (and
    (= false (__ 4))
    (= true (__ 563))
    (= 1103 (nth (filter __ (range)) 15))))
 
-(defn f [])
+(def f)
 
 (println (testf f))

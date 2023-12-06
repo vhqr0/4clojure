@@ -1,6 +1,6 @@
 ;; Convert a binary number, provided in the form of a string, to its numerical value.
 
-(defn test [__]
+(defn testf [__]
   (and
    (= 0 (__ "0"))
    (= 7 (__ "111"))
@@ -10,6 +10,6 @@
    (= 1365 (__ "10101010101"))
    (= 65535 (__ "1111111111111111"))))
 
-(defn f [])
+(def f)
 
 (println (testf f))

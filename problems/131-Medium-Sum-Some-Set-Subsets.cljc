@@ -1,7 +1,7 @@
 ;; Given a variable number of sets of integers, create a function which returns true iff all of the sets have a non-empty
 ;; subset with an equivalent summation.
 
-(defn test [__]
+(defn testf [__]
   (and
    (= true (__ #{-1 1 99} #{-2 2 888} #{-3 3 7777})) ; ex. all sets have a subset which sums to zero
    (= false (__ #{1} #{2} #{3} #{4}))
@@ -13,6 +13,6 @@
    (= true (__ #{-1 3 -5 7 -9 11 -13 15} #{1 -3 5 -7 9 -11 13 -15} #{1 -1 2 -2 4 -4 8 -8}))
    (= true (__ #{-10 9 -8 7 -6 5 -4 3 -2 1} #{10 -9 8 -7 6 -5 4 -3 2 -1}))))
 
-(defn f [])
+(def f)
 
 (println (testf f))

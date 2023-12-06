@@ -7,7 +7,7 @@
 ;; we only consider '(' and ')', but the answer is similar if you work with only {} or only [].</p> <p>There is an
 ;; interesting pattern in the numbers!</p>
 
-(defn test [__]
+(defn testf [__]
   (and
    (= [#{""} #{"()"} #{"()()" "(())"}] (map (fn [n] (__ n)) [0 1 2]))
    (= #{"((()))" "()()()" "()(())" "(())()" "(()())"} (__ 3))
@@ -15,6 +15,6 @@
    (= (nth (sort (filter #(.contains ^String % "(()()()())") (__ 9))) 6) "(((()()()())(())))")
    (= (nth (sort (__ 12)) 5000) "(((((()()()()()))))(()))")))
 
-(defn f [])
+(def f)
 
 (println (testf f))

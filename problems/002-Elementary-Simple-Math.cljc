@@ -2,10 +2,10 @@
 ;; arithmetic might seem confusing.</p><p><strong>Note:</strong> Enter only enough to fill in the blank (in this case, a
 ;; single number) - do not retype the whole problem.</p>
 
-(defn test [__]
+(defn testf [__]
   (and
    (= (- 10 (* 2 3)) __)))
 
-(defn f [])
+(def f)
 
 (println (testf f))

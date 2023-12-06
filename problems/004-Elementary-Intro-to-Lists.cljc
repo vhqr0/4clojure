@@ -1,9 +1,9 @@
 ;; Lists can be constructed with either a function or a quoted form.
 
-(defn test [__]
+(defn testf [__]
   (and
    (= (list __) '(:a :b :c))))
 
-(defn f [])
+(def f)
 
 (println (testf f))

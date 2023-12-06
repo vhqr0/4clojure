@@ -7,7 +7,7 @@
 
 ;; restricted: class type Class vector? sequential? list? seq? map? set? instance? getClass 
 
-(defn test [__]
+(defn testf [__]
   (and
    (= :map (__ {:a 1, :b 2}))
    (= :list (__ (range (rand-int 20))))
@@ -15,6 +15,6 @@
    (= :set (__ #{10 (rand-int 5)}))
    (= [:map :set :vector :list] (map __ [{} #{} [] ()]))))
 
-(defn f [])
+(def f)
 
 (println (testf f))

@@ -6,7 +6,7 @@
 ;; must reach</li> </ul> The mouse is not allowed to travel diagonally in the maze (only up/down/left/right), nor can he
 ;; escape the edge of the maze. Your function must return true iff the maze is solvable by the mouse.
 
-(defn test [__]
+(defn testf [__]
   (and
    (= true (__ ["M C"]))
    (= false (__ ["M # C"]))
@@ -16,6 +16,6 @@
    (= true (__ ["C######" " # " " # # " " # #M" " # "]))
    (= true (__ ["C# # # #" " " "# # # # " " " " # # # #" " " "# # # #M"]))))
 
-(defn f [])
+(def f)
 
 (println (testf f))

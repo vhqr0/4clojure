@@ -5,7 +5,7 @@
 ;; must return the minimal function which is logically equivalent to the input. </br></br> PS &mdash; You may want to give
 ;; this a read before proceeding: <a href="http://en.wikipedia.org/wiki/K_map">K-Maps</a>
 
-(defn test [__]
+(defn testf [__]
   (and
    (= (__ #{#{'a 'B 'C 'd} #{'A 'b 'c 'd} #{'A 'b 'c 'D} #{'A 'b 'C 'd} #{'A 'b 'C 'D} #{'A 'B 'c 'd} #{'A 'B 'c 'D} #{'A 'B 'C 'd}}) #{#{'A 'c} #{'A 'b} #{'B 'C 'd}})
    (= (__ #{#{'A 'B 'C 'D} #{'A 'B 'C 'd}}) #{#{'A 'B 'C}})
@@ -16,6 +16,6 @@
    (= (__ #{#{'a 'B 'c 'd} #{'A 'B 'c 'd} #{'a 'b 'c 'D} #{'a 'b 'C 'D} #{'A 'b 'c 'D} #{'A 'b 'C 'D} #{'a 'B 'C 'd} #{'A 'B 'C 'd}}) #{#{'B 'd} #{'b 'D}})
    (= (__ #{#{'a 'b 'c 'd} #{'A 'b 'c 'd} #{'a 'B 'c 'D} #{'A 'B 'c 'D} #{'a 'B 'C 'D} #{'A 'B 'C 'D} #{'a 'b 'C 'd} #{'A 'b 'C 'd}}) #{#{'B 'D} #{'b 'd}})))
 
-(defn f [])
+(def f)
 
 (println (testf f))

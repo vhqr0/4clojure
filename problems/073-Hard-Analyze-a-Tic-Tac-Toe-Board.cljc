@@ -3,7 +3,7 @@
 ;; Os in a horizontal, vertical, or diagonal row. Write a function which analyzes a tic-tac-toe board and returns :x if X
 ;; has won, :o if O has won, and nil if neither player has won.
 
-(defn test [__]
+(defn testf [__]
   (and
    (= nil (__ [[:e :e :e] [:e :e :e] [:e :e :e]]))
    (= :x (__ [[:x :e :o] [:x :e :e] [:x :e :o]]))
@@ -13,6 +13,6 @@
    (= :o (__ [[:x :e :o] [:x :o :e] [:o :e :x]]))
    (= nil (__ [[:x :o :x] [:x :o :x] [:o :x :o]]))))
 
-(defn f [])
+(def f)
 
 (println (testf f))

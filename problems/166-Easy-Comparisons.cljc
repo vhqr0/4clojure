@@ -5,13 +5,13 @@
 ;; follows: <ul> <li><var>x</var> = <var>y</var> &rarr; :eq</li> <li><var>x</var> &gt; <var>y</var> &rarr; :gt</li>
 ;; <li><var>x</var> &lt; <var>y</var> &rarr; :lt</li> </ul>
 
-(defn test [__]
+(defn testf [__]
   (and
    (= :gt (__ < 5 1))
    (= :eq (__ (fn [x y] (< (count x) (count y))) "pear" "plum"))
    (= :lt (__ (fn [x y] (< (mod x 5) (mod y 5))) 21 3))
    (= :gt (__ > 0 2))))
 
-(defn f [])
+(def f)
 
 (println (testf f))

@@ -2,13 +2,13 @@
 ;; the same length, use the one that occurs first. An increasing sub-sequence must have a length of 2 or greater to
 ;; qualify.
 
-(defn test [__]
+(defn testf [__]
   (and
    (= (__ [1 0 1 2 3 0 4 5]) [0 1 2 3])
    (= (__ [5 6 1 3 2 7]) [5 6])
    (= (__ [2 3 3 4 5]) [3 4 5])
    (= (__ [7 6 5 4]) [])))
 
-(defn f [])
+(def f)
 
 (println (testf f))

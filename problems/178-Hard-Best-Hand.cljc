@@ -6,7 +6,7 @@
 ;; the cards have the same rank</li> <li>Two pair: Two pairs of cards have the same rank</li> <li>Pair: Two cards have the
 ;; same rank</li> <li>High card: None of the above conditions are met</li> </ol>
 
-(defn test [__]
+(defn testf [__]
   (and
    (= :high-card (__ ["HA" "D2" "H3" "C9" "DJ"]))
    (= :pair (__ ["HA" "HQ" "SJ" "DA" "HT"]))
@@ -19,6 +19,6 @@
    (= :four-of-a-kind (__ ["HA" "DA" "CA" "SA" "DJ"]))
    (= :straight-flush (__ ["HA" "HK" "HQ" "HJ" "HT"]))))
 
-(defn f [])
+(def f)
 
 (println (testf f))

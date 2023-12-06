@@ -3,13 +3,13 @@
 ;; sum is 1. This is a happy number. An unhappy number (or sad number) is one that loops endlessly. Write a function that
 ;; determines if a number is happy or not.
 
-(defn test [__]
+(defn testf [__]
   (and
    (= (__ 7) true)
    (= (__ 986543210) true)
    (= (__ 2) false)
    (= (__ 3) false)))
 
-(defn f [])
+(def f)
 
 (println (testf f))

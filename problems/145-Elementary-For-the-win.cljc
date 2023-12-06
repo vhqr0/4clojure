@@ -3,12 +3,12 @@
 ;; properly, but that investment will be paid back with clear, concise sequence-wrangling later. With that in mind, read
 ;; over these <code>for</code> expressions and try to see how each of them produces the same result.
 
-(defn test [__]
+(defn testf [__]
   (and
    (= __ (for [x (range 40) :when (= 1 (rem x 4))] x))
    (= __ (for [x (iterate #(+ 4 %) 0) :let [z (inc x)] :while (< z 40)] z))
    (= __ (for [[x y] (partition 2 (range 20))] (+ x y)))))
 
-(defn f [])
+(def f)
 
 (println (testf f))

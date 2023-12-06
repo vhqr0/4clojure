@@ -4,13 +4,13 @@
 ;; href="http://en.wikipedia.org/wiki/Roman_numerals#Subtractive_principle">subtractive principle</a>. You don't need to
 ;; handle any numbers greater than MMMCMXCIX (3999), the largest number representable with ordinary letters.
 
-(defn test [__]
+(defn testf [__]
   (and
    (= 14 (__ "XIV"))
    (= 827 (__ "DCCCXXVII"))
    (= 3999 (__ "MMMCMXCIX"))
    (= 48 (__ "XLVIII"))))
 
-(defn f [])
+(def f)
 
 (println (testf f))

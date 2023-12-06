@@ -3,10 +3,10 @@
 ;; the return value is not a function, and then trampoline returns that non-function value. This is useful for implementing
 ;; mutually recursive algorithms in a way that won't consume the stack.
 
-(defn test [__]
+(defn testf [__]
   (and
    (= __ (letfn [(foo [x y] #(bar (conj x y) y)) (bar [x y] (if (> (last x) 10) x #(foo x (+ 2 y))))] (trampoline foo [] 1)))))
 
-(defn f [])
+(def f)
 
 (println (testf f))

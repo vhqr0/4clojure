@@ -4,12 +4,12 @@
 ;; item from the sequence, thus reducing the entire collection to one value. Don't worry, it's not as complicated as it
 ;; sounds.
 
-(defn test [__]
+(defn testf [__]
   (and
    (= 15 (reduce __ [1 2 3 4 5]))
    (= 0 (reduce __ []))
    (= 6 (reduce __ 1 [2 3]))))
 
-(defn f [])
+(def f)
 
 (println (testf f))

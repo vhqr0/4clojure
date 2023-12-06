@@ -29,17 +29,17 @@
     (.write sio "\n")
     (ap-if (.get problem "restricted")
            (print ";; restricted:" #* it "\n" :file sio))
-    (.write sio "(defn test [__]\n  (and")
+    (.write sio "(defn testf [__]\n  (and")
     (for [test (get problem "tests")]
       (.write sio "\n   ")
       (.write sio (.join " " (.split test))))
-    (.write sio "))\n\n(defn f [])\n\n(println (testf f))")
+    (.write sio "))\n\n(def f)\n\n(println (testf f))")
     (.getvalue sio)))
 
 (defn extract-problem [base problem]
   (with [f (open (problem-path base problem) "w")]
     (.write f (problem-content problem))))
 
-;; (defmain [_ [input-path "problems.json"] [output-path "problems"]]
-;;   (ap-each (with [f (open input-path)] (json.load f))
-;;            (extract-problem output-path it)))
+(defmain [_ [input-path "problems.json"] [output-path "problems"]]
+  (ap-each (with [f (open input-path)] (json.load f))
+           (extract-problem output-path it)))

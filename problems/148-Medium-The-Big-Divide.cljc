@@ -3,7 +3,7 @@
 ;; guaranteed to be <a href="http://en.wikipedia.org/wiki/Coprime">coprimes</a>.</p> <p>Note: Some test cases have a very
 ;; large <i>n</i>, so the most obvious solution will exceed the time limit.</p>
 
-(defn test [__]
+(defn testf [__]
   (and
    (= 0 (__ 3 17 11))
    (= 23 (__ 10 3 5))
@@ -13,6 +13,6 @@
    (= "1277732511922987429116" (str (__ (* 10000 10000 10000) 757 809)))
    (= "4530161696788274281" (str (__ (* 10000 10000 1000) 1597 3571)))))
 
-(defn f [])
+(def f)
 
 (println (testf f))

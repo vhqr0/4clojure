@@ -2,7 +2,7 @@
 ;; corresponding roman numeral in uppercase, adhering to the <a
 ;; href='http://www.numericana.com/answer/roman.htm#valid'>subtractive principle</a>.
 
-(defn test [__]
+(defn testf [__]
   (and
    (= "I" (__ 1))
    (= "XXX" (__ 30))
@@ -12,6 +12,6 @@
    (= "MMMCMXCIX" (__ 3999))
    (= "XLVIII" (__ 48))))
 
-(defn f [])
+(def f)
 
 (println (testf f))

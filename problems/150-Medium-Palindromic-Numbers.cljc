@@ -3,7 +3,7 @@
 ;; of all palindromic numbers that are not less than <code>n</code>.</p> <p>The most simple solution will exceed the time
 ;; limit!</p>
 
-(defn test [__]
+(defn testf [__]
   (and
    (= (take 26 (__ 0)) [0 1 2 3 4 5 6 7 8 9 11 22 33 44 55 66 77 88 99 101 111 121 131 141 151 161])
    (= (take 16 (__ 162)) [171 181 191 202 212 222 232 242 252 262 272 282 292 303 313 323])
@@ -13,6 +13,6 @@
    (= true (apply < (take 6666 (__ 9999999))))
    (= (nth (__ 0) 10101) 9102019)))
 
-(defn f [])
+(def f)
 
 (println (testf f))

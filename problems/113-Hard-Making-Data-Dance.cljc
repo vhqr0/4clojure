@@ -4,7 +4,7 @@
 
 ;; restricted: proxy 
 
-(defn test [__]
+(defn testf [__]
   (and
    (= "1, 2, 3" (str (__ 2 1 3)))
    (= '(2 1 3) (seq (__ 2 1 3)))
@@ -13,6 +13,6 @@
    (= "1, 1, 1, 1, 1" (str (apply __ (repeat 5 1))))
    (and (= nil (seq (__))) (= "" (str (__))))))
 
-(defn f [])
+(def f)
 
 (println (testf f))

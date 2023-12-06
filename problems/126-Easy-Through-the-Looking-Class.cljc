@@ -1,9 +1,9 @@
 ;; Enter a value which satisfies the following:
 
-(defn test [__]
+(defn testf [__]
   (and
    (let [x __] (and (= (class x) x) x))))
 
-(defn f [])
+(def f)
 
 (println (testf f))

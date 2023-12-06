@@ -4,12 +4,12 @@
 ;; <code>p</code>, and a sequence. It should return a lazy sequence of items in the list up to, but not including, the
 ;; <code>n</code>th item that satisfies the predicate.</p>
 
-(defn test [__]
+(defn testf [__]
   (and
    (= [2 3 5 7 11 13] (__ 4 #(= 2 (mod % 3)) [2 3 5 7 11 13 17 19 23]))
    (= ["this" "is" "a" "sentence"] (__ 3 #(some #{\i} %) ["this" "is" "a" "sentence" "i" "wrote"]))
    (= ["this" "is"] (__ 1 #{"a"} ["this" "is" "a" "sentence" "i" "wrote"]))))
 
-(defn f [])
+(def f)
 
 (println (testf f))

@@ -1,9 +1,9 @@
 ;; Clojure strings are Java strings. This means that you can use any of the Java string methods on Clojure strings.
 
-(defn test [__]
+(defn testf [__]
   (and
    (= __ (.toUpperCase "hello world"))))
 
-(defn f [])
+(def f)
 
 (println (testf f))

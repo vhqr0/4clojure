@@ -3,10 +3,10 @@
 ;; harder than it first appears); but it's worth the effort to solve it independently if you can! <br /><br /> Fun fact:
 ;; Gus is the name of the <a href="http://i.imgur.com/FBd8z.png">4Clojure dragon</a>.
 
-(defn test [__]
+(defn testf [__]
   (and
    (= (str '__) (__))))
 
-(defn f [])
+(def f)
 
 (println (testf f))

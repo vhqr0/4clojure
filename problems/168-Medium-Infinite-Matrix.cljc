@@ -16,7 +16,7 @@
 
 ;; restricted: for range iterate repeat cycle drop 
 
-(defn test [__]
+(defn testf [__]
   (and
    (= (take 5 (map #(take 6 %) (__ str))) [["00" "01" "02" "03" "04" "05"] ["10" "11" "12" "13" "14" "15"] ["20" "21" "22" "23" "24" "25"] ["30" "31" "32" "33" "34" "35"] ["40" "41" "42" "43" "44" "45"]])
    (= (take 6 (map #(take 5 %) (__ str 3 2))) [["32" "33" "34" "35" "36"] ["42" "43" "44" "45" "46"] ["52" "53" "54" "55" "56"] ["62" "63" "64" "65" "66"] ["72" "73" "74" "75" "76"] ["82" "83" "84" "85" "86"]])
@@ -26,6 +26,6 @@
    (= (class (nth (__ (constantly 10946)) 34)) (class (nth (__ (constantly 0) 5 8) 55)) (class (lazy-seq)))
    (= (let [m 377 n 610 w 987 check (fn [f s] (every? true? (map-indexed f s))) row (take w (nth (__ vector) m)) column (take w (map first (__ vector m n))) diagonal (map-indexed #(nth %2 %) (__ vector m n w w))] (and (check #(= %2 [m %]) row) (check #(= %2 [(+ m %) n]) column) (check #(= %2 [(+ m %) (+ n %)]) diagonal))) true)))
 
-(defn f [])
+(def f)
 
 (println (testf f))

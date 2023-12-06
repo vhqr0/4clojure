@@ -5,7 +5,7 @@
 ;; clockwise, starting from the center of the shape and working outwards, with the initial direction being down and to the
 ;; right.
 
-(defn test [__]
+(defn testf [__]
   (and
    (= (__ 2 2) ["2"])
    (= (__ 2 4) [" 2 " "* 4" " * "])
@@ -14,6 +14,6 @@
    (= (__ 2 256) [" 6 " " 5 * " "2 2 *" " 6 4 " " 1 "])
    (= (__ 10 10000) [" 0 " " 1 0 " " 0 1 0 " "* 0 0 0" " * 1 * " " * * " " * "])))
 
-(defn f [])
+(def f)
 
 (println (testf f))

@@ -3,7 +3,7 @@
 ;; sets consisting of k distinct elements taken from S. The number of k-combinations for a sequence is equal to the <a
 ;; href="https://secure.wikimedia.org/wikipedia/en/wiki/Binomial_coefficient">binomial coefficient</a>.
 
-(defn test [__]
+(defn testf [__]
   (and
    (= (__ 1 #{4 5 6}) #{#{4} #{5} #{6}})
    (= (__ 10 #{4 5 6}) #{})
@@ -12,6 +12,6 @@
    (= (__ 4 #{[1 2 3] :a "abc" "efg"}) #{#{[1 2 3] :a "abc" "efg"}})
    (= (__ 2 #{[1 2 3] :a "abc" "efg"}) #{#{[1 2 3] :a} #{[1 2 3] "abc"} #{[1 2 3] "efg"} #{:a "abc"} #{:a "efg"} #{"abc" "efg"}})))
 
-(defn f [])
+(def f)
 
 (println (testf f))
