@@ -9,6 +9,12 @@
    (= (__ conj [1] [2 3 4]) [[1] [1 2] [1 2 3] [1 2 3 4]])
    (= (last (__ * 2 [3 4 5])) (reduce * 2 [3 4 5]) 120)))
 
-(def f)
+(defn f
+  ([g coll] (f g (g (first coll)) (rest coll)))
+  ([g init coll]
+   (if (empty? coll)
+     (list init)
+     (lazy-seq
+      (cons init (f g (g init (first coll)) (rest coll)))))))
 
 (println (testf f))

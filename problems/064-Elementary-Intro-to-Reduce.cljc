@@ -10,6 +10,6 @@
    (= 0 (reduce __ []))
    (= 6 (reduce __ 1 [2 3]))))
 
-(def f)
+(def f +)
 
 (println (testf f))

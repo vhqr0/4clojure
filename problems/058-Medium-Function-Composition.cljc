@@ -10,6 +10,6 @@
    (= true ((__ zero? #(mod % 8) +) 3 5 7 9))
    (= "HELLO" ((__ #(.toUpperCase %) #(apply str %) take) 5 "hello world"))))
 
-(def f)
+(def f comp)
 
 (println (testf f))

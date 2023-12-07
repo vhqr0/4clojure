@@ -9,6 +9,15 @@
    (= (__ #(apply / %) [[1 2] [2 4] [4 6] [3 6]]) {1/2 [[1 2] [2 4] [3 6]], 2/3 [[4 6]]})
    (= (__ count [[1] [1 2] [3] [1 2 3] [2 3]]) {1 [[1] [3]], 2 [[1 2] [2 3]], 3 [[1 2 3]]})))
 
-(def f)
+(defn f [g coll]
+  (letfn [(split-group [group rcoll fcoll coll]
+            (cond (empty? coll) [group rcoll fcoll]
+                  (= (g (first coll)) group) (recur group (conj rcoll (first coll)) fcoll (rest coll))
+                  true (recur group rcoll (conj fcoll (first coll)) (rest coll))))]
+    (loop [rcolls [] coll coll]
+      (if (empty? coll)
+        (into {} rcolls)
+        (let [[group rcoll fcoll] (split-group (g (first coll)) [(first coll)] [] (rest coll))]
+          (recur (conj rcolls [group rcoll]) fcoll))))))
 
 (println (testf f))

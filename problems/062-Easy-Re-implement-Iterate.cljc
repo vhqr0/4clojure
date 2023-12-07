@@ -9,6 +9,8 @@
    (= (take 100 (__ inc 0)) (take 100 (range)))
    (= (take 9 (__ #(inc (mod % 3)) 1)) (take 9 (cycle [1 2 3])))))
 
-(def f)
+(defn f [g init]
+  (lazy-seq
+   (cons init (f g (g init)))))
 
 (println (testf f))
