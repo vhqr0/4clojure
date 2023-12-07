@@ -8,6 +8,10 @@
    (= (__ [:b :a :b :a :b]) {:a 2, :b 3})
    (= (__ '([1 2] [1 3] [1 3])) {[1 2] 1, [1 3] 2})))
 
-(def f)
+(defn f [coll]
+  (->> coll
+       (group-by identity)
+       (map (fn [[k vs]] [k (count vs)]))
+       (into {})))
 
 (println (testf f))

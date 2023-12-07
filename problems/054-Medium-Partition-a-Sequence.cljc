@@ -8,6 +8,11 @@
    (= (__ 2 (range 8)) '((0 1) (2 3) (4 5) (6 7)))
    (= (__ 3 (range 8)) '((0 1 2) (3 4 5)))))
 
-(def f)
+(defn f [n coll]
+  (let [x (take n coll)]
+    (if (< (count x) n)
+      ()
+      (lazy-seq
+       (cons x (f n (drop n coll)))))))
 
 (println (testf f))

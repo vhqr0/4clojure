@@ -9,6 +9,18 @@
    (= (__ [2 3 3 4 5]) [3 4 5])
    (= (__ [7 6 5 4]) [])))
 
-(def f)
+(defn f [coll]
+  (letfn [(take-consecutive [rcoll coll]
+            (if (or (empty? coll) (not= (first coll) (inc (last rcoll))))
+              [rcoll coll]
+              (recur (conj rcoll (first coll)) (rest coll))))]
+    (loop [rcoll [] rcnt 1 coll coll]
+      (if (empty? coll)
+        rcoll
+        (let [[nrcoll ncoll] (take-consecutive [(first coll)] (rest coll))
+              nrcnt (count nrcoll)]
+          (if (> nrcnt rcnt)
+            (recur nrcoll nrcnt ncoll)
+            (recur rcoll rcnt ncoll)))))))
 
 (println (testf f))

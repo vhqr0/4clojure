@@ -9,6 +9,11 @@
    (= (__ '([2 4] [1 2] [1 3] [1 3])) '([2 4] [1 2] [1 3]))
    (= (__ (range 50)) (range 50))))
 
-(def f)
+(defn f [coll]
+  (letfn [(remove-duplicate [s coll]
+            (cond (empty? coll) ()
+                  (s (first coll)) (recur s (rest coll))
+                  true (lazy-seq (cons (first coll) (remove-duplicate (conj s (first coll)) (rest coll))))))]
+    (remove-duplicate #{} coll)))
 
 (println (testf f))
