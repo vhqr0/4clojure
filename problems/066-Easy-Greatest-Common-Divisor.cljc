@@ -7,6 +7,9 @@
    (= (__ 5 7) 1)
    (= (__ 1023 858) 33)))
 
-(def f)
+(defn f [x y]
+  (cond (< x y) (recur (- y x) x)
+        (> x y) (recur (- x y) y)
+        true x))
 
 (println (testf f))

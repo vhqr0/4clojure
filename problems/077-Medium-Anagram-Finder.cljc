@@ -8,6 +8,12 @@
    (= (__ ["meat" "mat" "team" "mate" "eat"]) #{#{"meat" "team" "mate"}})
    (= (__ ["veer" "lake" "item" "kale" "mite" "ever"]) #{#{"veer" "ever"} #{"lake" "kale"} #{"mite" "item"}})))
 
-(def f)
+(defn f [coll]
+  (->> coll
+       (group-by set)
+       (vals)
+       (map set)
+       (filter (comp seq rest))         ; seq / complement empty?
+       (into #{})))
 
 (println (testf f))

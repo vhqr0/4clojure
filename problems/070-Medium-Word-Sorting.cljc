@@ -7,6 +7,7 @@
    (= (__ "Clojure is a fun language!") ["a" "Clojure" "fun" "is" "language"])
    (= (__ "Fools fall for foolish follies.") ["fall" "follies" "foolish" "Fools" "for"])))
 
-(def f)
+(defn f [s]
+  (sort-by clojure.string/lower-case (re-seq #"\w+" s)))
 
 (println (testf f))

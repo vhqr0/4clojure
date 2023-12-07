@@ -9,6 +9,13 @@
    (= (__ 40) 16)
    (= (__ 99) 60)))
 
-(def f)
+(defn f [x]
+  (letfn [(gcd [x y]
+            (cond (> x y) (recur (- x y) y)
+                  (< x y) (recur (- y x) x)
+                  true x))]
+    (if (= x 1)
+      1
+      (count (filter #(= (gcd %1 x) 1) (range 1 x))))))
 
 (println (testf f))

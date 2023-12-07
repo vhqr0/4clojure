@@ -15,6 +15,11 @@
    (= :set (__ #{10 (rand-int 5)}))
    (= [:map :set :vector :list] (map __ [{} #{} [] ()]))))
 
-(def f)
+(defn f [coll]
+  (let [s (gensym)]
+    (cond (= (inc (count coll)) (count (into coll [[s :_1] [s :_2]]))) :map
+          (= (inc (count coll)) (count (into coll [s s]))) :set
+          (= (first (into coll [:_ s])) s) :list
+          (= (last (into coll [:_ s])) s) :vector)))
 
 (println (testf f))
