@@ -8,6 +8,9 @@
    (= (__ '(5 4 3)) 3)
    (= (__ ["b" "c" "d"]) "d")))
 
-(defn f [coll] ((fn [coll x] (if (empty? coll) x (recur (rest coll) (first coll)))) coll nil))
+(defn f [coll]
+  (cond (empty? coll) nil
+        (empty? (rest coll)) (first coll)
+        true (recur (rest coll))))
 
 (println (testf f))

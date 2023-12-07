@@ -8,6 +8,6 @@
    (= (__ (sorted-set 5 7 2 7)) '(7 5 2))
    (= (__ [[1 2][3 4][5 6]]) [[5 6][3 4][1 2]])))
 
-(defn f [coll] ((fn [rcoll coll] (if (empty? coll) rcoll (recur (cons (first coll) rcoll) (rest coll)))) '() coll))
+(def f (partial reduce conj ()))
 
 (println (testf f))

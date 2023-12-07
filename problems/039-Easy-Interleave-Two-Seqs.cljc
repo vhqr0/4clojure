@@ -10,6 +10,12 @@
    (= (__ [1 2 3 4] [5]) [1 5])
    (= (__ [30 20] [25 15]) [30 25 20 15])))
 
-(defn f [coll1 coll2] ((fn [rcoll coll1 coll2] (if (or (empty? coll1) (empty? coll2)) rcoll (recur (conj (conj rcoll (first coll1)) (first coll2)) (rest coll1) (rest coll2)))) [] coll1 coll2))
+;; (def f (partial mapcat list))
+
+(defn f [coll1 coll2]
+  (if (or (empty? coll1) (empty? coll2))
+    ()
+    (lazy-seq
+     (cons (first coll1) (cons (first coll2) (f (rest coll1) (rest coll2)))))))
 
 (println (testf f))

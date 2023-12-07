@@ -8,6 +8,11 @@
    (= (__ [[1 2] [3 4]]) '([1 2] [1 2] [3 4] [3 4]))))
 
 ;; (defn f [coll] (interleave coll coll))
-(defn f [coll] ((fn [rcoll coll] (if (empty? coll) rcoll (recur (conj (conj rcoll (first coll)) (first coll)) (rest coll)))) [] coll))
+
+(defn f [coll]
+  (if (empty? coll)
+    ()
+    (lazy-seq
+     (cons (first coll) (cons (first coll) (f (rest coll)))))))
 
 (println (testf f))

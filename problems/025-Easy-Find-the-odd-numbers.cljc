@@ -7,6 +7,11 @@
    (= (__ [2 2 4 6]) '())
    (= (__ [1 1 1 3]) '(1 1 1 3))))
 
-(def f (partial filter odd?))
+;; (def f (partial filter odd?))
+
+(defn f [coll]
+    (cond (empty? coll) ()
+          (even? (first coll)) (recur (rest coll))
+          true (lazy-seq (cons (first coll) (f (rest coll))))))
 
 (println (testf f))

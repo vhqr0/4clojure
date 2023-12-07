@@ -7,6 +7,11 @@
    (= (__ [[1 2] [3 4]]) [1 2])))
 
 ;; (def f (comp last butlast))
-(defn f [coll] ((fn [coll x y] (if (empty? coll) y (recur (rest coll) (first coll) x))) coll nil nil))
+
+(defn f [coll]
+  (cond (empty? coll) nil
+        (empty? (rest coll)) nil
+        (empty? (rest (rest coll))) (first coll)
+        true (recur (rest coll))))
 
 (println (testf f))

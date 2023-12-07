@@ -10,6 +10,6 @@
    (= (__ '(13)) 1)
    (= (__ '(:a :b :c)) 3)))
 
-(defn f [coll] ((fn [coll n] (if (empty? coll) n (recur (rest coll) (inc n)))) coll 0))
+(def f (partial reduce (fn [acc x] (inc acc)) 0))
 
 (println (testf f))

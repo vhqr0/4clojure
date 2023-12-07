@@ -8,6 +8,12 @@
    (= (__ [[1 2] [3 4]] 2) '([1 2] [1 2] [3 4] [3 4]))
    (= (__ [44 33] 2) [44 44 33 33])))
 
-(defn f [coll n] ((fn [rcoll coll] (if (empty? coll) rcoll (recur ((fn [coll x n] (if (= n 0) coll (recur (conj coll x) x (dec n)))) rcoll (first coll) n) (rest coll)))) [] coll))
+;; (defn f [coll n] (mapcat (fn [x] (repeat n x)) coll))
+
+(defn f [coll n]
+  (if (empty? coll)
+    ()
+    (lazy-seq
+     (concat (repeat n (first coll)) (f (rest coll) n)))))
 
 (println (testf f))

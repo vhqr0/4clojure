@@ -6,6 +6,6 @@
    (empty? (__ "nothing"))
    (= (__ "$#A(*&987Zf") "AZ")))
 
-(defn f [s] (apply str (filter #(not= (clojure.string/lower-case %) (str %)) (seq s))))
+(defn f [s] (apply str (re-seq #"[A-Z]" s)))
 
 (println (testf f))

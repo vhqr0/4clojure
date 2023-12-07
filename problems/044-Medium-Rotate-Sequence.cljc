@@ -8,6 +8,9 @@
    (= (__ 1 '(:a :b :c)) '(:b :c :a))
    (= (__ -4 '(:a :b :c)) '(:c :a :b))))
 
-(defn f [n coll] (let [cnt (count coll) n (if (>= n 0) (rem n cnt) (+ cnt (rem n cnt)))] (concat (nth (iterate rest coll) n) (take n coll))))
+(defn f [n coll]
+  (let [cnt (count coll)
+        n (if (>= n 0) (rem n cnt) (+ cnt (rem n cnt)))]
+    (concat (drop n coll) (take n coll))))
 
 (println (testf f))

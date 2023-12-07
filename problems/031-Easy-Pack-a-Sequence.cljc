@@ -6,6 +6,16 @@
    (= (__ [:a :a :b :b :c]) '((:a :a) (:b :b) (:c)))
    (= (__ [[1 2] [1 2] [3 4]]) '(([1 2] [1 2]) ([3 4])))))
 
-(defn f [coll] ((fn [rcoll coll xcoll x] (cond (empty? coll) (conj rcoll xcoll) (= (first coll) x) (recur rcoll (rest coll) (conj xcoll x) x) true (recur (conj rcoll xcoll) (rest coll) (list (first coll)) (first coll)))) [] (rest coll) (list (first coll)) (first coll)))
+;; (def f (partial partition-by identity))
+
+(defn f [coll]
+  (letfn [(split-duplicate [rcoll coll]
+            (cond (empty? coll) [rcoll coll]
+                  (not= (first coll) (first rcoll)) [rcoll coll]
+                  true (recur (cons (first coll) rcoll) (rest coll))))]
+    (if (empty? coll)
+      ()
+      (let [[rcoll coll] (split-duplicate (list (first coll)) (rest coll))]
+        (lazy-seq (cons rcoll (f coll)))))))
 
 (println (testf f))
