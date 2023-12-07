@@ -7,6 +7,6 @@
    (= 4 ((__ quot) 2 8))
    (= [1 2 3] ((__ take) [1 2 3 4 5] 3))))
 
-(def f)
+(defn f [rf] (fn [& args] (apply rf (reverse args))))
 
 (println (testf f))

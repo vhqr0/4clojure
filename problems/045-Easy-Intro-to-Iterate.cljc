@@ -4,6 +4,6 @@
   (and
    (= __ (take 5 (iterate #(+ 3 %) 1)))))
 
-(def f)
+(def f '(1 4 7 10 13))
 
 (println (testf f))

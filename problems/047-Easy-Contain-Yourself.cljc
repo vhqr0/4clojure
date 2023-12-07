@@ -8,6 +8,6 @@
    (contains? {4 :a 2 :b} __)
    (not (contains? [1 2 4] __))))
 
-(def f)
+(def f 4)
 
 (println (testf f))
