@@ -12,6 +12,27 @@
    (= true (__ #{"share" "hares" "shares" "hare" "are"}))
    (= false (__ #{"share" "hares" "hare" "are"}))))
 
-(def f)
+(defn f [coll]
+  (letfn [(word-chain-change-step? [x y]
+            (and
+             (= (count x) (count y))
+             (= (count (filter not (map = x y))) 1)))
+          (word-chain-insert-step? [x y]
+            (and
+             (= (inc (count x)) (count y))
+             (some #(= (seq x) (concat (take %1 y) (drop (inc %1) y))) (range (count y)))))
+          (word-chain-step? [x y]
+            (or (word-chain-change-step? x y)
+                (word-chain-insert-step? x y)
+                (word-chain-insert-step? y x)))
+          (filter-word-chain-step [x coll]
+            (cond (empty? coll) ()
+                  (not (word-chain-step? x (first coll))) (recur x (rest coll))
+                  true (lazy-seq (cons (first coll) (filter-word-chain-step x (rest coll))))))
+          (word-chain? [x coll]
+            (if (empty? coll)
+              true
+              (true? (some #(word-chain? %1 (disj coll %1)) (filter-word-chain-step x coll)))))]
+    (true? (some #(word-chain? %1 (disj coll %1)) coll))))
 
 (println (testf f))

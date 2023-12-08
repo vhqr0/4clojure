@@ -9,6 +9,7 @@
    (= (__ 500) false)
    (= (__ 8128) true)))
 
-(def f)
+(defn f [n]
+  (= n (apply + (filter #(zero? (rem n %1)) (range 1 n)))))
 
 (println (testf f))

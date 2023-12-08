@@ -10,6 +10,7 @@
    (= false (__ true true true))
    (= true (__ true true true false))))
 
-(def f)
+(defn f [& bs]
+  (true? (and (some true? bs) (some false? bs))))
 
 (println (testf f))

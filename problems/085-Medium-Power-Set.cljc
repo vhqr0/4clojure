@@ -8,6 +8,16 @@
    (= (__ #{1 2 3}) #{#{} #{1} #{2} #{3} #{1 2} #{1 3} #{2 3} #{1 2 3}})
    (= (count (__ (into #{} (range 10)))) 1024)))
 
-(def f)
+(defn f [s]
+  (letfn [(combination [coll n]
+            (cond (= n 0) (list #{})
+                  (empty? coll) ()
+                  true (lazy-seq (concat (map #(conj %1 (first coll)) (combination (rest coll) (dec n)))
+                                         (combination (rest coll) n)))))
+          (combination-all [coll n]
+            (if (= n 0)
+              (list #{})
+              (lazy-seq (concat (combination coll n) (combination-all coll (dec n))))))]
+    (into #{} (combination-all s (count s)))))
 
 (println (testf f))

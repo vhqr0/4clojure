@@ -8,6 +8,18 @@
    (let [more-legs #{["cat" "man"] ["man" "snake"] ["spider" "cat"]}] (= (__ more-legs) #{["cat" "man"] ["cat" "snake"] ["man" "snake"] ["spider" "cat"] ["spider" "man"] ["spider" "snake"]}))
    (let [progeny #{["father" "son"] ["uncle" "cousin"] ["son" "grandson"]}] (= (__ progeny) #{["father" "son"] ["father" "grandson"] ["uncle" "cousin"] ["son" "grandson"]}))))
 
-(def f)
+(defn f [s]
+  (letfn [(transitive-closure-conj [coll r]
+            (into coll
+                  (cons
+                   r
+                   (concat (map #(vector (first %1) (last r)) (filter #(= (last %1) (first r)) coll))
+                           (map #(vector (first r) (last %1)) (filter #(= (first %1) (last r)) coll))))))
+          (transitive-closure-into [rcoll coll]
+                                   (if (empty? coll)
+                                     rcoll
+                                     (recur (transitive-closure-conj rcoll (first coll)) (rest coll))))]
+    (transitive-closure-into #{} s)))
 
 (println (testf f))
+

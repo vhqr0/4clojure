@@ -9,6 +9,10 @@
    (= (__ #{0 1 2} #{3 4 5}) #{})
    (= (__ #{:a :b :c :d} #{:c :e :a :f :d}) #{:a :c :d})))
 
-(def f)
+(defn f [& ss]
+  (->> ss
+       (reduce into #{})
+       (filter (fn [x] (every? #(%1 x) ss)))
+       (into #{})))
 
 (println (testf f))

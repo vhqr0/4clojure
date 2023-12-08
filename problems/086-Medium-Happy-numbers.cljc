@@ -10,6 +10,15 @@
    (= (__ 2) false)
    (= (__ 3) false)))
 
-(def f)
+(defn f [n]
+  (letfn [(iterate-digits [n base]
+            (if (zero? n)
+              ()
+              (lazy-seq (cons (rem n base) (iterate-digits (quot n base) base)))))
+          (happy-number? [s n]
+            (cond (= n 1) true
+                  (s n) false
+                  true (recur (conj s n) (apply + (map #(* %1 %1) (iterate-digits n 10))))))]
+    (happy-number? #{} n)))
 
 (println (testf f))

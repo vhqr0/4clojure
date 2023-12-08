@@ -8,6 +8,10 @@
    (= (__ #{} #{4 5 6}) #{4 5 6})
    (= (__ #{[1 2] [2 3]} #{[2 3] [3 4]}) #{[1 2] [3 4]})))
 
-(def f)
+(defn f [& ss]
+  (->> ss
+       (reduce into #{})
+       (filter (fn [x] (= (count (filter #(%1 x) ss)) 1)))
+       (into #{})))
 
 (println (testf f))
