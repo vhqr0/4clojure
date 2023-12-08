@@ -7,6 +7,7 @@
    (= (__ #{1 2 3} #{4 5}) #{[1 4] [2 4] [3 4] [1 5] [2 5] [3 5]})
    (= 300 (count (__ (into #{} (range 10)) (into #{} (range 30)))))))
 
-(def f)
+(defn f [coll1 coll2]
+  (set (for [x coll1 y coll2] [x y])))
 
 (println (testf f))

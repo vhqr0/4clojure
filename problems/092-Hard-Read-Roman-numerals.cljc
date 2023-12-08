@@ -11,6 +11,24 @@
    (= 3999 (__ "MMMCMXCIX"))
    (= 48 (__ "XLVIII"))))
 
-(def f)
+(defn f [s]
+  (let [roman-val {\M 1000
+                   \D  500
+                   \C  100
+                   \L   50
+                   \X   10
+                   \V    5
+                   \I    1}]
+    (letfn [(roman-int-val [roman]
+              (if (coll? roman)
+                (- (roman-val (last roman)) (roman-val (first roman)))
+                (roman-val roman)))
+            (roman-iterate [coll]
+              (cond (empty? coll) ()
+                    (or (empty? (rest coll)) (>= (roman-val (first coll)) (roman-val (nth coll 1)))) (lazy-seq (cons (first coll) (roman-iterate (rest coll))))
+                    true (lazy-seq (cons (take 2 coll) (roman-iterate (drop 2 coll))))))]
+      (->> (roman-iterate s)
+           (map roman-int-val)
+           (apply +)))))
 
 (println (testf f))

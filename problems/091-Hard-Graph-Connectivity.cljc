@@ -12,6 +12,15 @@
    (= false (__ #{[:a :b] [:b :c] [:c :d] [:x :y] [:d :a] [:b :e]}))
    (= true (__ #{[:a :b] [:b :c] [:c :d] [:x :y] [:d :a] [:b :e] [:x :a]}))))
 
-(def f)
+(defn f [coll]
+  (letfn [(graph-conj [gs [p1 p2]]
+            (let [g1 (some #(if (%1 p1) %1) gs)
+                  g2 (some #(if (%1 p2) %1) gs)]
+              (cond (and g1 g2 (= g1 g2)) gs
+                    (and g1 g2 (not= g1 g2)) (conj (disj gs g1 g2) (into g1 g2))
+                    g1 (conj (disj gs g1) (conj g1 p2))
+                    g2 (conj (disj gs g2) (conj g2 p1))
+                    true (conj gs (hash-set p1 p2)))))]
+    (= (count (reduce graph-conj #{} coll)) 1)))
 
 (println (testf f))

@@ -12,6 +12,14 @@
    (= true (__ [[:a :b] [:a :c] [:c :b] [:a :e] [:b :e] [:a :d] [:b :d] [:c :e] [:d :e] [:c :f] [:d :f]]))
    (= false (__ [[1 2] [2 3] [2 4] [2 5]]))))
 
-(def f)
+(defn f [coll]
+  (letfn [(graph-tour? [x coll]
+            (if (empty? coll)
+              true
+              (true? (some (fn [[i [y z]]]
+                             (cond (= y x) (graph-tour? z (concat (take i coll) (drop (inc i) coll)))
+                                   (= z x) (graph-tour? y (concat (take i coll) (drop (inc i) coll)))))
+                           (map-indexed vector coll)))))]
+    (true? (some #(graph-tour? %1 coll) (reduce into #{} coll)))))
 
 (println (testf f))

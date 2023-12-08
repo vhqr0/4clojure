@@ -22,4 +22,3 @@
     (transitive-closure-into #{} s)))
 
 (println (testf f))
-
