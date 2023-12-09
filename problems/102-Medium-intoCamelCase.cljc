@@ -8,6 +8,9 @@
    (= (__ "multi-word-key") "multiWordKey")
    (= (__ "leaveMeAlone") "leaveMeAlone")))
 
-(def f)
+(defn f [s]
+  (let [words (clojure.string/split s #"-")]
+    (->> (cons (first words) (map clojure.string/capitalize (rest words)))
+         (apply str))))
 
 (println (testf f))

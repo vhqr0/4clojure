@@ -16,6 +16,14 @@
    (= (__ "ttttattttctg" "tcaaccctaccat") 10)
    (= (__ "gaattctaatctc" "caaacaaaaaattt") 9)))
 
-(def f)
+;;; slow
+(defn f [s1 s2]
+  (cond (empty? s1) (count s2)
+        (empty? s2) (count s1)
+        (= (first s1) (first s2)) (recur (rest s1) (rest s2))
+        (= (last s1) (last s2)) (recur (butlast s1) (butlast s2))
+        true (min (inc (f (butlast s1) s2))
+                  (inc (f s1 (butlast s2)))
+                  (inc (f (butlast s1) (butlast s2))))))
 
 (println (testf f))

@@ -12,6 +12,13 @@
    (= (__ 4 #{[1 2 3] :a "abc" "efg"}) #{#{[1 2 3] :a "abc" "efg"}})
    (= (__ 2 #{[1 2 3] :a "abc" "efg"}) #{#{[1 2 3] :a} #{[1 2 3] "abc"} #{[1 2 3] "efg"} #{:a "abc"} #{:a "efg"} #{"abc" "efg"}})))
 
-(def f)
+;; copy from 085
+(defn f [n s]
+  (letfn [(combination [coll n]
+            (cond (= n 0) (list #{})
+                  (empty? coll) ()
+                  true (lazy-seq (concat (map #(conj %1 (first coll)) (combination (rest coll) (dec n)))
+                                         (combination (rest coll) n)))))]
+    (set (combination s n))))
 
 (println (testf f))
