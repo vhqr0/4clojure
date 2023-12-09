@@ -8,6 +8,15 @@
    (= {:a [1], :b [2]} (__ [:a 1, :b 2]))
    (= {:a [1 2 3], :b [], :c [4]} (__ [:a 1 2 3 :b :c 4]))))
 
-(def f)
+(defn f [coll]
+  (letfn [(split-val [coll]
+            (split-with (complement keyword?) coll))
+          (iterate-keyval [coll]
+            (if (empty? coll)
+              ()
+              (let [key (first coll)
+                    [val coll] (split-val (rest coll))]
+                (lazy-seq (cons [key val] (iterate-keyval coll))))))]
+    (into {} (iterate-keyval coll))))
 
 (println (testf f))

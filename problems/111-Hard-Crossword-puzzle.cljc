@@ -11,11 +11,34 @@
 (defn testf [__]
   (and
    (= true (__ "the" ["_ # _ _ e"]))
-   (= false (__ "the" ["c _ _ _" "d _ # e" "r y _ _"]))
-   (= true (__ "joy" ["c _ _ _" "d _ # e" "r y _ _"]))
-   (= false (__ "joy" ["c o n j" "_ _ y _" "r _ _ #"]))
-   (= true (__ "clojure" ["_ _ _ # j o y" "_ _ o _ _ _ _" "_ _ f _ # _ _"]))))
+   (= false (__ "the" ["c _ _ _"
+                       "d _ # e"
+                       "r y _ _"]))
+   (= true (__ "joy" ["c _ _ _"
+                      "d _ # e"
+                      "r y _ _"]))
+   (= false (__ "joy" ["c o n j"
+                       "_ _ y _"
+                       "r _ _ #"]))
+   (= true (__ "clojure" ["_ _ _ # j o y"
+                          "_ _ o _ _ _ _"
+                          "_ _ f _ # _ _"]))))
 
-(def f)
+(defn f [word board]
+  (letfn [(fill? [word coll]
+            (cond (empty? word) (or (empty? coll) (= (first coll) \#))
+                  (empty? coll) false
+                  (or (= (first coll) \_) (= (first coll) (first word))) (recur (rest word) (rest coll))
+                  true false))
+          (fill-row? [word coll]
+            (cond (empty? coll) false
+                  (and (= (first coll) \#) (fill? word (rest coll))) true ; notice: cons a sentinel \#
+                  true (recur word (rest coll))))]
+    (let [board (map (fn [s] (filter #(not= %1 \space) s)) board)
+          rows (concat board (apply map vector board))]
+      (->> rows
+           (map #(cons \# %1))
+           (some #(fill-row? word %1))
+           (true?)))))
 
 (println (testf f))

@@ -11,6 +11,8 @@
    (= [1 1 1 3 2 1 3 2 1 1] (nth (__ [1]) 6))
    (= 338 (count (nth (__ [3 2]) 15)))))
 
-(def f)
+(defn f [coll]
+  (let [coll (mapcat #(vector (count %1) (first %1)) (partition-by identity coll))]
+    (lazy-seq (cons coll (f coll)))))
 
 (println (testf f))
