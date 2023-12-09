@@ -9,6 +9,9 @@
    (= (repeat 10 nil) (__ (fn [_] nil) (range 10)))
    (= [1000000 1000001] (->> (__ inc (range)) (drop (dec 1000000)) (take 2)))))
 
-(def f)
+(defn f [g coll]
+  (if (empty? coll)
+    ()
+    (lazy-seq (cons (g (first coll)) (f g (rest coll))))))
 
 (println (testf f))

@@ -12,6 +12,7 @@
    (= (__ :x [[:x :x :o] [:e :e :e] [:e :e :e]]) #{})
    (= (__ :o [[:x :x :o] [:o :e :o] [:x :e :e]]) #{[2 2] [1 1]})))
 
+;; TODO
 (def f)
 
 (println (testf f))

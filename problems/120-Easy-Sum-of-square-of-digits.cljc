@@ -9,6 +9,15 @@
    (= 50 (__ (range 100)))
    (= 50 (__ (range 1000)))))
 
-(def f)
+(defn f [coll]
+  (letfn [(iterate-digits [n base]
+            (if (zero? n)
+              ()
+              (lazy-seq (cons (rem n base) (iterate-digits (quot n base) base)))))
+          (smaller-than-squared-sum? [n]
+            (< n (->> (iterate-digits n 10)
+                      (map #(* %1 %1))
+                      (reduce +))))]
+    (count (filter smaller-than-squared-sum? coll))))
 
 (println (testf f))
