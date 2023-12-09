@@ -8,14 +8,63 @@
 
 (defn testf [__]
   (and
-   (= true (__ ["M C"]))
+   ;; (= true (__ ["M C"]))
+   ;; (= false (__ ["M # C"]))
+   ;; (= true (__ ["#######" "# #" "# # #" "#M # C#" "#######"]))
+   ;; (= false (__ ["########" "#M # #" "# # #" "# # # #" "# # #" "# # #" "# # # #" "# # #" "# # C#" "########"]))
+   ;; (= false (__ ["M " " " " " " " " ##" " #C"]))
+   ;; (= true (__ ["C######" " # " " # # " " # #M" " # "]))
+   ;; (= true (__ ["C# # # #" " " "# # # # " " " " # # # #" " " "# # # #M"]))
+   (= true  (__ ["M   C"]))
    (= false (__ ["M # C"]))
-   (= true (__ ["#######" "# #" "# # #" "#M # C#" "#######"]))
-   (= false (__ ["########" "#M # #" "# # #" "# # # #" "# # #" "# # #" "# # # #" "# # #" "# # C#" "########"]))
-   (= false (__ ["M " " " " " " " " ##" " #C"]))
-   (= true (__ ["C######" " # " " # # " " # #M" " # "]))
-   (= true (__ ["C# # # #" " " "# # # # " " " " # # # #" " " "# # # #M"]))))
+   (= true  (__ ["#######"
+                 "#     #"
+                 "#  #  #"
+                 "#M # C#"
+                 "#######"]))
+   (= false (__ ["########"
+                 "#M  #  #"
+                 "#   #  #"
+                 "# # #  #"
+                 "#   #  #"
+                 "#  #   #"
+                 "#  # # #"
+                 "#  #   #"
+                 "#  #  C#"
+                 "########"]))
+   (= false (__ ["M     "
+                 "      "
+                 "      "
+                 "      "
+                 "    ##"
+                 "    #C"]))
+   (= true  (__ ["C######"
+                 " #     "
+                 " #   # "
+                 " #   #M"
+                 "     # "]))
+   (= true  (__ ["C# # # #"
+                 "        "
+                 "# # # # "
+                 "        "
+                 " # # # #"
+                 "        "
+                 "# # # #M"]))))
 
-(def f)
+(defn f [maze]
+  (letfn [(maze-space-conj [coll [c i j]]
+            (let [e (if (= c \space) #{[i j]} #{c [i j]})
+                  c1 (some #(if (%1 [(dec i) j]) %1) coll)
+                  c2 (some #(if (%1 [i (dec j)]) %1) coll)]
+              (cond (and c1 c2 (= c1 c2)) (conj (disj coll c1) (into c1 e))
+                    (and c1 c2 (not= c1 c2)) (conj (disj coll c1 c2) (into (into c1 c2) e))
+                    c1 (conj (disj coll c1) (into c1 e))
+                    c2 (conj (disj coll c2) (into c2 e))
+                    true (conj coll e))))]
+    (true?
+     (->> (for [i (range (count maze)) j (range (count (first maze)))] [(get (get maze i) j) i j])
+          (filter #(not= (first %1) \#))
+          (reduce maze-space-conj #{})
+          (some #(and (contains? %1 \M) (contains? %1 \C)))))))
 
 (println (testf f))

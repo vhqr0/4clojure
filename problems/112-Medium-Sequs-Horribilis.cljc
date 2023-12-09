@@ -12,6 +12,10 @@
    (= (__ 0 [0 0 [0 [0]]]) '(0 0 (0 (0))))
    (= (__ 1 [-10 [1 [2 3 [4 5 [6 7 [8]]]]]]) '(-10 (1 (2 3 (4)))))))
 
-(def f)
+(defn f [n coll]
+  (cond (empty? coll) ()
+        (coll? (first coll)) (lazy-seq (list (f n (first coll))))
+        (neg? (- n (first coll))) ()
+        true (lazy-seq (cons (first coll) (f (- n (first coll)) (rest coll))))))
 
 (println (testf f))

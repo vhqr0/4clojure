@@ -10,6 +10,10 @@
    (= ["this" "is" "a" "sentence"] (__ 3 #(some #{\i} %) ["this" "is" "a" "sentence" "i" "wrote"]))
    (= ["this" "is"] (__ 1 #{"a"} ["this" "is" "a" "sentence" "i" "wrote"]))))
 
-(def f)
+(defn f [n pred coll]
+  (cond (empty? coll) ()
+        (not (pred (first coll))) (lazy-seq (cons (first coll) (f n pred (rest coll))))
+        (= n 1) ()
+        true (lazy-seq (cons (first coll) (f (dec n) pred (rest coll))))))
 
 (println (testf f))
