@@ -9,10 +9,55 @@
 
 (defn testf [__]
   (and
-   (= (__ [" " " ## " " ## " " ## " " ## " " "]) [" " " ## " " # " " # " " ## " " "])
-   (= (__ [" " " " " ### " " " " "]) [" " " # " " # " " # " " "])
-   (= (__ [" " " " " ### " " ### " " " " "]) [" " " # " " # # " " # # " " # " " "])))
+   ;; (= (__ [" " " ## " " ## " " ## " " ## " " "]) [" " " ## " " # " " # " " ## " " "])
+   ;; (= (__ [" " " " " ### " " " " "]) [" " " # " " # " " # " " "])
+   ;; (= (__ [" " " " " ### " " ### " " " " "]) [" " " # " " # # " " # # " " # " " "])
+   (= (__ ["      "
+           " ##   "
+           " ##   "
+           "   ## "
+           "   ## "
+           "      "])
+      ["      "
+       " ##   "
+       " #    "
+       "    # "
+       "   ## "
+       "      "])
+   (= (__ ["     "
+           "     "
+           " ### "
+           "     "
+           "     "])
+      ["     "
+       "  #  "
+       "  #  "
+       "  #  "
+       "     "])
+   (= (__ ["      "
+           "      "
+           "  ### "
+           " ###  "
+           "      "
+           "      "])
+      ["      "
+       "   #  "
+       " #  # "
+       " #  # "
+       "  #   "
+       "      "])))
 
-(def f)
+(defn f [board]
+  (letfn [(live? [board i j]
+            (= (get (get board i) j) \#))
+          (count-live [board i j]
+            (count (filter (fn [[ii jj]] (and (not= [ii jj] [i j]) (live? board ii jj)))
+                           (for [ii (range (dec i) (+ i 2)) jj (range (dec j) (+ j 2))] [ii jj]))))
+          (next-state [board i j]
+            (let [cnt (count-live board i j)]
+              (if (or (= cnt 3) (and (= cnt 2) (live? board i j))) \# \space)))]
+    (let [cnt (count board)]
+      (for [i (range cnt)]
+        (apply str (for [j (range cnt)] (next-state board i j)))))))
 
 (println (testf f))

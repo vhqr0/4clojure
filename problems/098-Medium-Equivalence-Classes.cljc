@@ -10,6 +10,10 @@
    (= (__ identity #{0 1 2 3 4}) #{#{0} #{1} #{2} #{3} #{4}})
    (= (__ (constantly true) #{0 1 2 3 4}) #{#{0 1 2 3 4}})))
 
-(def f)
+(defn f [g coll]
+  (->> (group-by g coll)
+       (vals)
+       (map set)
+       (set)))
 
 (println (testf f))

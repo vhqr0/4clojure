@@ -9,6 +9,13 @@
    (== (__ 3/4 1/6) 3/2)
    (== (__ 7 5/7 2 3/5) 210)))
 
-(def f)
+(defn f [& ns]
+  (letfn [(gcd [x y]
+            (cond (< x y) (recur (- y x) x)
+                  (> x y) (recur (- x y) y)
+                  true x))
+          (lcm [x y]
+            (/ (* x y) (gcd x y)))]
+    (reduce lcm ns)))
 
 (println (testf f))

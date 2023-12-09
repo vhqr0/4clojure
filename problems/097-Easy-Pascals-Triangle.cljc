@@ -9,6 +9,11 @@
    (= (map __ (range 1 6)) [ [1] [1 1] [1 2 1] [1 3 3 1] [1 4 6 4 1]])
    (= (__ 11) [1 10 45 120 210 252 210 120 45 10 1])))
 
-(def f)
+(defn f [n]
+  (letfn [(iterate-pascal [coll]
+            (let [ncoll (concat '(1) (map (partial apply +) (partition 2 1 coll)) '(1))]
+              (lazy-seq
+               (cons ncoll (iterate-pascal ncoll)))))]
+    (nth (concat '(() (1)) (iterate-pascal '(1))) n)))
 
 (println (testf f))

@@ -12,6 +12,10 @@
    (= (__ [1 [2 [3 [4 false nil] nil] nil] nil]) false)
    (= (__ '(:a nil ())) false)))
 
-(def f)
+(defn f [coll]
+  (or (nil? coll)
+      (and (coll? coll)
+           (= (count coll) 3)
+           (every? f (rest coll)))))
 
 (println (testf f))

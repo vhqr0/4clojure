@@ -11,6 +11,12 @@
    (= (__ [1 [2 nil [3 [4 [5 nil nil] [6 nil nil]] nil]] [2 [3 nil [4 [5 nil nil] [6 nil nil]]] nil]]) false)
    (= (__ [1 [2 nil [3 [4 [5 nil nil] [6 nil nil]] nil]] [2 [3 nil [4 [6 nil nil] nil]] nil]]) false)))
 
-(def f)
+(defn f [coll]
+  (letfn [(tree-mirror [coll]
+            (if (coll? coll)
+              (let [[root l r] coll]
+                [root (tree-mirror r) (tree-mirror l)])
+              coll))]
+    (= (nth coll 1) (tree-mirror (nth coll 2)))))
 
 (println (testf f))
