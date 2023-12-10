@@ -4,6 +4,6 @@
   (and
    (let [x __] (and (= (class x) x) x))))
 
-(def f)
+(def f Class)
 
 (println (testf f))

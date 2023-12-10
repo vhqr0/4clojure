@@ -5,8 +5,16 @@
 
 (defn testf [__]
   (and
-   (= (str '__) (__))))
+   ;; (= (str '__) (__))
+   (= __ (eval __))))
 
-(def f)
+;; (def i '(fn [x] x))
+;; (list i (list 'quote i))
+;; => '((fn [x] x) (quote (fn [x] x)))
+;; (eval (list i (list 'quote i)))
+;; => '(fn [x] x)
+
+(def f '(let [g '(fn [x] (list 'let ['g (list 'quote x)] '(eval (list g (list 'quote g)))))]
+          (eval (list g (list 'quote g)))))
 
 (println (testf f))

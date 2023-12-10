@@ -12,6 +12,27 @@
    (= {[0 3] #{[1 2]}, [1 3] #{[1 2]}, [3 3] #{[2 2]}, [2 3] #{[2 2]}} (__ '[[e e e e] [e w b e] [w w b e] [e e b e]] 'w))
    (= {[0 3] #{[2 1] [1 2]}, [1 3] #{[1 2]}, [2 3] #{[2 1] [2 2]}} (__ '[[e e w e] [b b w e] [b w w e] [b w w w]] 'b))))
 
-(def f)
+(defn f [board color]
+  (letfn [(board-color [board [i j]]
+            (get (get board i) j))
+          (iterate-ray [[i j]]
+            [(map #(vector    i     (+ j %1)) (range 1 (- 4 j)))
+             (map #(vector    i     (- j %1)) (range 1 (inc j)))
+             (map #(vector (+ i %1)    j    ) (range 1 (- 4 i)))
+             (map #(vector (- i %1)    j    ) (range 1 (inc i)))
+             (map #(vector (+ i %1) (+ j %1)) (range 1 (- 4 (max i j))))
+             (map #(vector (- i %1) (- j %1)) (range 1 (inc (min i j))))
+             (map #(vector (+ i %1) (- j %1)) (range 1 (min (- 4 i) (inc j))))
+             (map #(vector (- i %1) (+ j %1)) (range 1 (min (inc i) (- 4 j))))])
+          (ray-flip [board ray color]
+            (let [inverse-color (if (= color 'b) 'w 'b)
+                  [coll1 coll2] (split-with #(= (board-color board %1) inverse-color) ray)]
+              (if (= (board-color board (first coll2)) color) coll1 ())))
+          (board-flip [board ij color]
+            (if (= (board-color board ij) 'e) (mapcat #(ray-flip board %1 color) (iterate-ray ij)) ()))]
+    (->> (for [i (range 5) j (range 5)] [i j])
+         (map #(vector %1 (set (board-flip board %1 color))))
+         (filter #(seq (last %1)))
+         (into {}))))
 
 (println (testf f))
