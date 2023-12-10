@@ -9,7 +9,7 @@
 (defn f [s]
   (->> (clojure.string/split s #",")
        (map clojure.edn/read-string)
-       (filter #(<= (rem (Math/sqrt %1) 1.0) 0.0000001))
+       (filter #(<= (rem (clojure.math/sqrt %1) 1.0) 0.0000001))
        (interpose ",")
        (apply str)))
 

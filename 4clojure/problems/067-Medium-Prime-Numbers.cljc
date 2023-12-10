@@ -8,7 +8,7 @@
 
 (defn f [n]
   (letfn [(iterate-prime [i]
-            (if (some #(= (rem i %1) 0) (range 2 (inc (Math/sqrt i))))
+            (if (some #(= (rem i %1) 0) (range 2 (inc (clojure.math/sqrt i))))
               (recur (inc i))
               (lazy-seq (cons i (iterate-prime (inc i))))))]
     (take n (concat [2 3 5 7] (iterate-prime 11)))))
