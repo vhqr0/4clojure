@@ -11,6 +11,12 @@
    (= [6 0 -4] (map (__ '(* (+ 2 a) (- 10 b))) '[{a 1 b 8} {b 5 a -2} {a 2 b 11}]))
    (= 1 ((__ '(/ (+ x 2) (* 3 (+ y 1)))) '{x 4 y 1}))))
 
-(def f)
+(defn f [form]
+  (letfn [(calc [form m]
+            (->> (rest form)
+                 (map (fn [arg] (cond (symbol? arg) (m arg) (coll? arg) (calc arg m) true arg)))
+                 (apply ({'+ + '- - '* * '/ /} (first form)))))]
+    (fn [m]
+      (calc form m))))
 
 (println (testf f))

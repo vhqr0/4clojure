@@ -10,6 +10,11 @@
    (= 1365 (__ "10101010101"))
    (= 65535 (__ "1111111111111111"))))
 
-(def f)
+(defn f [s]
+  (letfn [(parse-bin [base s]
+            (if (empty? s)
+              base
+              (recur (+ (bit-shift-left base 1) (if (= (first s) \1) 1 0)) (rest s))))]
+    (parse-bin 0 s)))
 
 (println (testf f))
