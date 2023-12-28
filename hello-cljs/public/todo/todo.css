@@ -1,0 +1,291 @@
+* {
+  box-sizing: border-box;
+  vertical-align: top;
+  text-rendering: optimizelegibility;
+}
+
+tr,
+td,
+table,
+tbody {
+  padding: 0;
+  margin: 0;
+  border-collapse: collapse;
+}
+
+html,
+input,
+textarea,
+button {
+  font:
+    13px/20px "Input Sans Narr",
+    sans-serif;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(
+    to bottom,
+    hsl(185, 45%, 63%) 0%,
+    hsl(185, 45%, 58%) 100%
+  );
+  background-attachment: fixed;
+}
+
+input[type="text"] {
+  border: none;
+  border-bottom: 2px solid #cfcfcf;
+  background: transparent;
+}
+
+input[type="text"]:focus {
+  border-color: hsl(4, 74%, 65%);
+}
+
+input[type="text"],
+button {
+  outline: none;
+}
+
+.todo-checkbox,
+.group-item,
+.history-view {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.canvas {
+  width: 1200px;
+  margin: 40px auto;
+}
+
+.main-view {
+  width: 700px;
+}
+
+.add-view {
+  width: 400px;
+  margin-left: 40px;
+}
+
+.main-view,
+.add-view {
+  background: linear-gradient(to bottom, #fffffc 0%, #fafaf4 100%);
+  border-radius: 9px;
+  display: inline-block;
+  box-shadow: 0 3px 10px hsla(0, 0%, 50%, 0.9);
+  border: 4px solid #f9bf3b;
+  border-color: hsl(4, 74%, 65%);
+}
+
+.filter {
+  font-size: 20px;
+  line-height: 30px;
+  width: 650px;
+  margin: 20px auto;
+  display: block;
+}
+
+.overview-pane,
+.todo-pane {
+  display: inline-block;
+}
+
+.overview-pane {
+  width: 200px;
+  padding: 0 0 10px;
+}
+
+.group {
+  margin: 0 0 20px 0;
+}
+
+.group-title,
+.group-item {
+  padding: 4px 20px 0px;
+  line-height: 20px;
+  margin: -2px 0;
+}
+
+.group-title {
+  text-transform: uppercase;
+  color: #9f9f9f;
+  margin-bottom: 0px;
+}
+
+.group-item-count {
+  float: right;
+  display: inline-block;
+  padding: 2px 6px 0px;
+  border-radius: 16px;
+  font-size: 10px;
+  line-height: 16px;
+  border: none;
+  position: relative;
+  top: -1px;
+}
+
+.group-item > span:first-child {
+  cursor: pointer;
+}
+
+.group-item_empty {
+  color: #bbb;
+}
+
+.group-item-count,
+.group-item_selected > span:first-child,
+button,
+input[type="submit"] {
+  background: linear-gradient(
+    to bottom,
+    hsl(4, 74%, 70%) 0%,
+    hsl(4, 74%, 65%) 100%
+  );
+  color: white;
+}
+
+.group-item_selected > span:first-child {
+  padding: 6px 7px 4px 6px;
+  margin: -6px -7px -4px -6px;
+  border-radius: 3px;
+}
+
+.todo-pane {
+  padding: 4px 0 0 20px;
+}
+
+.todo {
+  margin: 0 0 20px 0;
+}
+
+.todo-text {
+  font-size: 20px;
+  margin-left: 26px;
+}
+
+.todo-subtext {
+  font-size: 10px;
+  margin-left: 26px;
+}
+
+.todo-subtext > span + span:before {
+  content: "·";
+  margin: 0 3px;
+}
+
+.todo-checkbox {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #f9bf3b;
+  border-radius: 4px;
+  float: left;
+  font-size: 20px;
+  line-height: 14px;
+  padding: 0 0 0 2px;
+  cursor: pointer;
+  border-color: hsl(4, 74%, 65%);
+}
+
+.todo-checkbox {
+  color: transparent;
+}
+
+.todo-checkbox:hover {
+  background: hsl(4, 74%, 80%);
+}
+
+.todo_done > .todo-checkbox {
+  color: #ccc;
+  background: hsl(4, 74%, 94%);
+  border-color: hsl(4, 74%, 94%);
+}
+
+.todo_done > .todo-checkbox:hover {
+  background: hsl(4, 74%, 97%);
+}
+
+.todo_done {
+  color: #bbb;
+}
+
+.add-view {
+  padding: 0 20px 20px;
+}
+
+.add-view > input[type="text"] {
+  width: 340px;
+  margin: 20px 0;
+  display: block;
+}
+
+.add-view > input[type="text"]:focus {
+  outline: none;
+  border-color: hsl(4, 74%, 65%);
+}
+
+.add-text {
+  font-size: 20px;
+  line-height: 30px;
+}
+
+input[type="text"].add-due {
+  width: 101px;
+}
+
+.add-submit {
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px 2px;
+  cursor: pointer;
+}
+
+.add-submit:focus {
+  outline: none;
+}
+
+.add-submit:active {
+  box-shadow: 0 2px 4px hsla(0, 0%, 0%, 0.2) inset;
+  position: relative;
+  top: 1px;
+}
+
+.history-view {
+  margin: 10px 0;
+  line-height: 22px;
+}
+
+.history-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.history-btn[disabled] {
+  opacity: 0.2;
+  cursor: default;
+}
+
+.history-state {
+  margin: 0 4px;
+  width: 14px;
+  height: 14px;
+  border: none;
+  background: white;
+  opacity: 0.3;
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.history-selected {
+  opacity: 1;
+}
